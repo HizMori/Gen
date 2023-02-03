@@ -14,9 +14,8 @@ def satart_message(message):
 def callback(call):
     if call.message:
         if call.data == '1':
-            bot.send_photo(call.message.chat.id, photo='https://rare-gallery.com/thumbnail/54299-Xiao-Genshin-Impact-Black-Hair-Green-Hair-Yellow.jpg')
+            bot.send_video(call.message.chat.id, video='https://upload-os-bbs.mihoyo.com/upload/2021/02/20/11910332/b698396410c67c404e561e08d6cafe6c_7932095444786076935.gif')
             bot.send_message(call.message.chat.id, "Крассивый Сяо)")
-
 
 print("Бот запущен!!!")
 
