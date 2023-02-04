@@ -35,6 +35,12 @@ def callback(call):
             bot.send_media_group(call.message.chat.id, media_gard1)
             bot.send_media_group(call.message.chat.id, media_gard2)
             bot.send_message(call.message.chat.id, 'Хотите вернуться?', reply_markup=kb_close())
+        elif call.data == '4':
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
+                                  text='🌺 *Глазурная лилия* 🌺', parse_mode='Markdown')
+            bot.send_media_group(call.message.chat.id, media_gard1)
+            bot.send_media_group(call.message.chat.id, media_gard2)
+            bot.send_message(call.message.chat.id, 'Хотите вернуться?', reply_markup=kb_close())
 
 print("Бот запущен!!!")
 
