@@ -11,28 +11,30 @@ def satart_message(message):
 
 @bot.message_handler(commands = ['routes'])
 def routes_message(message):
-    bot.send_message(message.chat.id, 'Какой ресурс вы хотите собрать?', reply_markup=keyboard)
+    bot.send_message(message.chat.id, 'Какой ресурс вы хотите собрать?', reply_markup=kb1())
 
 @bot.callback_query_handler(func=lambda call:True)
 def callback(call):
     if call.message:
-        if call.data == '1':
+        if call.data == '0':
+            bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id, text='Какой ресурс вы хотите собрать?', reply_markup=kb1())
+        elif call.data == '1':
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
                                   text='🌶 *Заоблачный перчик* 🌶', parse_mode='Markdown')
             bot.send_media_group(call.message.chat.id, media_perets1)
             bot.send_media_group(call.message.chat.id, media_perets2)
-            bot.send_message(call.message.chat.id, 'Какой ресурс вы хотите собрать?', reply_markup=keyboard)
+            bot.send_message(call.message.chat.id, 'Хотите вернуться?', reply_markup=kb_close())
         elif call.data == '2':
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
                                   text='🍄 *Гриб руккхашава* 🍄', parse_mode='Markdown')
             bot.send_media_group(call.message.chat.id, media_grib1)
-            bot.send_message(call.message.chat.id, 'Какой ресурс вы хотите собрать?', reply_markup=keyboard)
+            bot.send_message(call.message.chat.id, 'Хотите вернуться?', reply_markup=kb_close())
         elif call.data == '3':
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.id,
                                   text='*Гард*', parse_mode='Markdown')
             bot.send_media_group(call.message.chat.id, media_gard1)
             bot.send_media_group(call.message.chat.id, media_gard2)
-            bot.send_message(call.message.chat.id, 'Какой ресурс вы хотите собрать?', reply_markup=keyboard)
+            bot.send_message(call.message.chat.id, 'Хотите вернуться?', reply_markup=kb_close())
 
 print("Бот запущен!!!")
 

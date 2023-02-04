@@ -1,7 +1,9 @@
 from telebot import *
+from keyboa import Keyboa
+import os
+from gen import *
 
-keyboard = types.InlineKeyboardMarkup(row_width=2)
-callback_button1 = types.InlineKeyboardButton(text='Заоблачный перчик 🌶', callback_data='1')
-callback_button2 = types.InlineKeyboardButton(text='Гриб руккхашава 🍄', callback_data='2')
-callback_button3 = types.InlineKeyboardButton(text='Гард', callback_data='3')
-keyboard.add(callback_button1, callback_button2, callback_button3)
+button1 = [{'Заоблачный перчик 🌶': '1'}, {'Гриб руккхашава 🍄': '2'}, {'Гард': '3'}]
+close = [{'Назад': '0'}]
+kb1 = Keyboa(items=button1, items_in_row=2)
+kb_close = Keyboa(items=close)
