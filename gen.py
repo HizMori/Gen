@@ -7,11 +7,16 @@ bot = telebot.TeleBot('5941098660:AAExtbCvBFnHUPBoXUBLLvU4NO4nbOK1DMo')
 @bot.message_handler(commands = ['start'])
 def satart_message(message):
     bot.send_video(message.chat.id, video='https://upload-os-bbs.mihoyo.com/upload/2021/02/20/11910332/b698396410c67c404e561e08d6cafe6c_7932095444786076935.gif')
-    bot.send_message(message.chat.id, hello)
+    bot.send_message(message.chat.id, hello, reply_markup=kb2())
 
 @bot.message_handler(commands = ['routes'])
 def routes_message(message):
     bot.send_message(message.chat.id, 'Какой ресурс вы хотите собрать?', reply_markup=kb1())
+
+@bot.message_handler(commands = ['character_guide'])
+def routes_message(message):
+    bot.send_message(message.chat.id, 'Кого хотите лучше узнать?', reply_markup=kb3())
+
 
 @bot.callback_query_handler(func=lambda call:True)
 def callback(call):
@@ -41,6 +46,10 @@ def callback(call):
             bot.send_media_group(call.message.chat.id, media_gard1)
             bot.send_media_group(call.message.chat.id, media_gard2)
             bot.send_message(call.message.chat.id, 'Хотите вернуться?', reply_markup=kb_close())
+        elif call.data == '11':
+            bot.send_message(call.message.chat.id, 'Какой ресурс вы хотите собрать?', reply_markup=kb1())
+        elif call.data == '12':
+            bot.send_message(call.message.chat.id, 'Кого хотите лучше узнать?', reply_markup=kb3())
 
 print("Бот запущен!!!")
 
